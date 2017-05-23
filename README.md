@@ -31,9 +31,9 @@ The repository consists of a single docker-compose.yml file which creates three 
 * NGINX Plus Developer License, if using NGINX Plus in a test or development environment (see [Deploying with NGINX
    Plus](https://github.com/nginxinc/fabric-model/#deploying-with-nginx-plus))
 
-### <a href="#" id="deploying-with-nginx">Deploying With Open Source NGINX
+### <a href="#" id="deploying-with-nginx"></a>Deploying With Open Source NGINX
 
-Clone the repository and change into the project directory. You can also download the repository as a ZIP file from [here](https://github.com/nginxinc/fabric-model/archive/master.zip).
+Clone the repository and change into the project directory. You can also download the repository as a ZIP file from [here](https://github.com/nginxinc/fabric-model-architecture/archive/master.zip).
 
    ```
    git clone git@github.com:nginxinc/fabric-model.git
@@ -53,7 +53,7 @@ Clone the repository and change into the project directory. You can also downloa
 
 After you dismiss the warning, this appears in the browser window:
 
-![alt text](https://github.com/nginxinc/fabric-model/fabric_model_home.png "Fabric Model Home Page")
+![Fabric Model Architecture Homepage](https://github.com/nginxinc/fabric-model-architecture/fabric_model_home.png "Fabric Model Home Page")
 
 The shell/terminal window where you ran the ```docker-compose``` command will contain output from the NGINX instances running in the containers, indicating that the instances are handling requests.
 
