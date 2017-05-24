@@ -78,13 +78,39 @@ You will also need to modify each Dockerfile to install NGINX Plus. In each Dock
 ```
 ENV USE_NGINX_PLUS=true
 ```
-Be sure to modify all of the Dockerfiles:
+The locations of the Dockerfiles with the environment variable are:
 ```
 proxy/Dockerfile
 web/Dockerfile
 backend/Dockerfile
 ```
-You should then rebuild all of the microservice images
+Copy the certificate and key files to each of the containers in order to make sure that the self-signed certificate warning does not occur:
+```
+cp <location-of-cert-file> <location-of-key-file> backend/etc/ssl/nginx/certs
+cp <location-of-cert-file> <location-of-key-file> proxy/etc/ssl/nginx/certs
+cp <location-of-cert-file> <location-of-key-file> web/etc/ssl/nginx/certs
+```
+
+***Optional: Configure the names of the certificate and key files***
+ 
+The default names for the certificate and key files are **certificate.pem** and **key.pem**, respectively. If you are using different file names, it is necessary to update some of the configuration files. 
+
+This step is not necessary if the file names are **certificate.pem** and **key.pem**.
+
+Set the name of the certificate and key files under each of the web, backend, and proxy services as build arguments in the docker-compose.yml file:
+```
+args:
+	- CERT_FILE_NAME=<certificate-file-name>
+	- KEY_FILE_NAME=<key-file-name>
+
+```
+Set the name of the certificate and key files in the ```fabric_config.yml``` of each of the web, backend, and proxy services:
+```
+cert_file_name: <certificate-file-name>
+key_file_name: <key-file-name>
+
+```
+Then rebuild all of the microservice images
 ```
 docker-compose build
 ```
@@ -92,10 +118,10 @@ And run the application
 ```
 docker-compose up
 ```
-Open https://localhost in your browser. You should see this:
-TODO: put a screenshot here
-In a browser, navigate to https://localhost/status.html
-TODO: explanation of NGINX Plus status page, healthchecks, etc
+When you open https://localhost in your browser, you should see the same message and page that is displayed in [Step 6](#step-six) above.
+
+In a browser, navigate to https://localhost/status.html and you will see the [server status information](https://www.nginx.com/products/live-activity-monitoring/). Note that this feature is only available with NGINX Plus.
+
 ## Authors
 * **Chris Stetson** - [cstetson](https://github.com/cstetson)
 * **Ben Horowitz** - [benhorowitz](https://github.com/benhorowitz)

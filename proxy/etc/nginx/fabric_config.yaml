@@ -9,3 +9,5 @@ services:
     expose_external: true
     healthcheck: true
     healthcheck_uri: /
+cert_file_name: certificate.pem
+key_file_name: key.pem
