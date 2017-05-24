@@ -89,6 +89,10 @@ ul li {
   list-style: none;
 }
 
+ul.bulletlist, ul.bulletlist > li {
+    list-style: circle;
+}
+
 .login-btn {
   border: 1px solid #01dd60;
   color: #01dd60;
