@@ -78,13 +78,27 @@ You will also need to modify each Dockerfile to install NGINX Plus. In each Dock
 ```
 ENV USE_NGINX_PLUS=true
 ```
-Be sure to modify all of the Dockerfiles:
+The locations of the Dockerfiles with the environment variable are:
 ```
 proxy/Dockerfile
 web/Dockerfile
 backend/Dockerfile
 ```
-You should then rebuild all of the microservice images
+In this early release of the Fabric Model repository, your SSL certificate and key files must be named **certificate.pem** and **key.pem**. This will change in the future. 
+
+Rename the certificate and key files to **certificate.pem** and **key.pem**, respectively
+```
+cp <cert-file-name> certificate.pem
+cp <key-file-name> key.pem
+
+```
+Copy the newly renamed certificate and key files to each of the containers in order to make sure that the self-signed certificate warning does not occur:
+```
+cp certificate.pem key.pem backend/etc/ssl/nginx/
+cp certificate.pem key.pem proxy/etc/ssl/nginx/
+cp certificate.pem key.pem web/etc/ssl/nginx/
+```
+Then rebuild all of the microservice images
 ```
 docker-compose build
 ```
@@ -92,10 +106,10 @@ And run the application
 ```
 docker-compose up
 ```
-Open https://localhost in your browser. You should see this:
-TODO: put a screenshot here
-In a browser, navigate to https://localhost/status.html
-TODO: explanation of NGINX Plus status page, healthchecks, etc
+When you open https://localhost in your browser, you should see the same message and page that is displayed in [Step 6](#step-six) above.
+
+In a browser, navigate to https://localhost/status.html and you will see the [server status information](https://www.nginx.com/products/live-activity-monitoring/). Note that this feature is only available with NGINX Plus.
+
 ## Authors
 * **Chris Stetson** - [cstetson](https://github.com/cstetson)
 * **Ben Horowitz** - [benhorowitz](https://github.com/benhorowitz)
