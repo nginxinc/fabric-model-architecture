@@ -18,26 +18,18 @@ content =
     { :date => Date.today,
       :author => '<your name here>',
       :title => 'NGINX Microservices Network Architecture Training',
-      :body => 'Join us Friday, September, 9 for "Microservice Network Architectures with NGINX Plus". In this one day hands-on training, you will explore the Proxy, Router Mesh, and Fabric network architecture models through the NGINX Microservices Reference Architecture. In hands-on labs, you will create an NGINX proxy to a microservices application. You’ll then do centralized load balancing in the Router Mesh model. Finally, you’ll do container-to-container load balancing using the Fabric Model.
+      :body => 'Join us Friday, September 9 for "Microservice Network Architectures with NGINX Plus".
 
-Audience: This class is for experienced developers and NGINX admins who understand microservices architectures.
+In this one-day, hands-on training, you will explore the three architecture models in the NGINX Microservices Reference Architecture: the Proxy Model, Router Mesh Model, and Fabric Model. In hands-on labs, you will create an NGINX proxy to a microservices application. You’ll then do centralized load balancing in the Router Mesh model. Finally, you’ll do container-to-container load balancing using the Fabric Model.
 
-What: A one day, hands-on, team-based learning experience with NGINX’s Chris Stetson and professional services team. Participants will explore three microservice network architectures through in class lectures and hands-on activities.
+Audience: This class is for experienced developers and NGINX admins who understand microservices architectures.<br/>What: A one-day, hands-on, team-based learning experience with NGINX Chief Architect Chris Stetson and the NGINX professional services team. Participants will explore three microservice network architectures through in-class lectures and hands-on activities.
 
 You will:
 
-Learn how to deploy NGINX Plus as a HTTP gateway to their microservices application
-Deploy NGINX Plus to act as a centralized load-balancer for interprocess communication between their microservices
-Deploy NGINX Plus at the container level to create a fabric network of persistent SSL connections between their microservices
-Collaborate and connect with other participants
-Get your questions answered by experts from NGINX
-Prerequisites/Requirements:
+<ul class="bulletlist"><li>Learn how to deploy NGINX Plus as an HTTP gateway to your microservices application</li><li>Deploy NGINX Plus to act as a centralized load balancer for interprocess communication between their microservices</li><li>Deploy NGINX Plus at the container level to create a fabric network with persistent SSL connections between microservices</li><li>Collaborate and connect with other participants</li><li>Get your questions answered by experts from NGINX</li></ul>
 
-Solid understanding of web server functionality
-Experience working with NGINX .conf files
-Working knowledge of NGINX proxy and load balancing capabilities
-Comfortable working on the command line in a UNIX environment
-Attendees should bring a wifi-enabled laptop to the class'
+<p>Prerequisites/Requirements:</p>
+<ul class="bulletlist"><li>Solid understanding of webserver functionality</li><li>Experience working with NGINX .conf files</li><li>Working knowledge of NGINX proxy and load balancing capabilities</li><li>Comfortable working on the command line in a UNIX environment</li><li>Attendees should bring a wifi-enabled laptop to the class</li></ul>'
     }
 
 before do
