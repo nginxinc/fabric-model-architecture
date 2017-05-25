@@ -3,5 +3,3 @@ resolver:
   host: 127.0.0.11
   ttl: 3s
 root: /usr/src/app/public
-cert_file_name: certificate.pem
-key_file_name: key.pem

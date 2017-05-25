@@ -11,14 +11,10 @@ COPY usr /usr
 
 ENV USE_NGINX_PLUS=false
 
-RUN cd /etc/ssl/nginx
-
-ARG KEY_FILE_NAME
-ARG CERT_FILE_NAME
-
 RUN if [ "$USE_NGINX_PLUS" = "false" ]; then \
-	openssl req -nodes -newkey rsa:2048 -keyout /etc/ssl/nginx/certs/$KEY_FILE_NAME -out csr.pem -subj "/C=US/ST=California/L=San Francisco/O=NGINX/OU=Professional Services/CN=proxy" && \
-	openssl x509 -req -days 365 -in csr.pem -signkey /etc/ssl/nginx/certs/$KEY_FILE_NAME -out /etc/ssl/nginx/certs/$CERT_FILE_NAME; fi
+	cd /etc/ssl/nginx && \
+	openssl req -nodes -newkey rsa:2048 -keyout key.pem -out csr.pem -subj "/C=US/ST=California/L=San Francisco/O=NGINX/OU=Professional Services/CN=web" && \
+	openssl x509 -req -days 365 -in csr.pem -signkey key.pem -out certificate.pem; fi
 
 RUN /usr/local/sbin/install-nginx.sh
 

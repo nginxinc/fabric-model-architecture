@@ -1,11 +1,7 @@
 version: '3.1'
 services:
   proxy:
-    build:
-      context: proxy/
-      args:
-        - CERT_FILE_NAME=certificate.pem
-        - KEY_FILE_NAME=key.pem
+    build: proxy
     image: fabric-model/proxy
     ports:
       - "80:80"
@@ -15,11 +11,7 @@ services:
     container_name: fabric_proxy
 
   web:
-    build:
-      context: web/
-      args:
-        - CERT_FILE_NAME=certificate.pem
-        - KEY_FILE_NAME=key.pem
+    build: web
     image: fabric-model/web
     environment:
       - BACKEND_ENDPOINT_URL=http://localhost/backend
@@ -32,11 +24,7 @@ services:
     container_name: fabric_web
 
   backend:
-    build:
-      context: backend/
-      args:
-        - CERT_FILE_NAME=certificate.pem
-        - KEY_FILE_NAME=key.pem
+    build: backend
     image: fabric-model/backend
     ports:
       - "82:80"

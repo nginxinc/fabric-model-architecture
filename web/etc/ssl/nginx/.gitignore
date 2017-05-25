@@ -1,5 +1,4 @@
 nginx-repo.crt
 nginx-repo.key
-certs/*
-
-!certs/.gitkeep
+certificate.pem
+key.pem

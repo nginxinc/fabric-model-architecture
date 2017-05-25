@@ -84,31 +84,19 @@ proxy/Dockerfile
 web/Dockerfile
 backend/Dockerfile
 ```
-Copy the certificate and key files to each of the containers in order to make sure that the self-signed certificate warning does not occur:
-```
-cp <location-of-cert-file> <location-of-key-file> backend/etc/ssl/nginx/certs
-cp <location-of-cert-file> <location-of-key-file> proxy/etc/ssl/nginx/certs
-cp <location-of-cert-file> <location-of-key-file> web/etc/ssl/nginx/certs
-```
+In this early release of the Fabric Model repository, your SSL certificate and key files must be named **certificate.pem** and **key.pem**. This will change in the future. 
 
-***Optional: Configure the names of the certificate and key files***
- 
-The default names for the certificate and key files are **certificate.pem** and **key.pem**, respectively. If you are using different file names, it is necessary to update some of the configuration files. 
-
-This step is not necessary if the file names are **certificate.pem** and **key.pem**.
-
-Set the name of the certificate and key files under each of the web, backend, and proxy services as build arguments in the docker-compose.yml file:
+Rename the certificate and key files to **certificate.pem** and **key.pem**, respectively
 ```
-args:
-	- CERT_FILE_NAME=<certificate-file-name>
-	- KEY_FILE_NAME=<key-file-name>
+cp <cert-file-name> certificate.pem
+cp <key-file-name> key.pem
 
 ```
-Set the name of the certificate and key files in the ```fabric_config.yml``` of each of the web, backend, and proxy services:
+Copy the newly renamed certificate and key files to each of the containers in order to make sure that the self-signed certificate warning does not occur:
 ```
-cert_file_name: <certificate-file-name>
-key_file_name: <key-file-name>
-
+cp certificate.pem key.pem backend/etc/ssl/nginx/
+cp certificate.pem key.pem proxy/etc/ssl/nginx/
+cp certificate.pem key.pem web/etc/ssl/nginx/
 ```
 Then rebuild all of the microservice images
 ```
