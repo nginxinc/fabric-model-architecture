@@ -19,65 +19,65 @@ error_log /var/log/nginx/error.log debug;
 worker_processes  auto;
 
 events {
-  worker_connections  1024;
+    worker_connections  1024;
 }
 
 daemon off;
 
 http {
 
-  include mime.types;
-  include nginx-gz.conf;
-  resolver {{ resolver.host }} valid={{ resolver.ttl }};  #use local DNS and override TTL to whatever value makes sense
-  resolver_timeout 2s;
-  client_max_body_size 30M;
+    include mime.types;
+    include nginx-gz.conf;
+    resolver {{ resolver.host }} valid={{ resolver.ttl }};  #use local DNS and override TTL to whatever value makes sense
+    resolver_timeout 2s;
+    client_max_body_size 30M;
 
-  {% if services is defined %}
-    {% for name, service in services.iteritems() %}
+      {% if services is defined %}
+        {% for name, service in services.iteritems() %}
     upstream {{ name }} {
-      server        {{ service.server }};
-      zone backend  64k;
-      least_conn;
-      keepalive 		300;
+        server        {{ service.server }};
+        zone backend  64k;
+        least_conn;
+        keepalive 		300;
     }
-    {% endfor %}
-  {% endif %}
+        {% endfor %}
+      {% endif %}
 
-  server {
-    listen 80;
+    server {
+        listen 80;
 
-    {% if services is defined %}
-      {% for name, service in services.iteritems() %}
-        {{ location(name) }}
-      {% endfor %}
-    {% endif %}
+        {% if services is defined %}
+          {% for name, service in services.iteritems() %}
+            {{ location(name) }}
+          {% endfor %}
+        {% endif %}
 
-    location / {
-      return         301 https://$host$request_uri;
+        location / {
+            return         301 https://$host$request_uri;
+        }
     }
-  }
 
-  server {
-    listen       443 ssl;
+    server {
+        listen       443 ssl;
 
-    ssl_certificate      /etc/ssl/nginx/certificate.pem;
-    ssl_certificate_key  /etc/ssl/nginx/key.pem;
-    include nginx-ssl.conf;
+        ssl_certificate      /etc/ssl/nginx/certificate.pem;
+        ssl_certificate_key  /etc/ssl/nginx/key.pem;
+        include nginx-ssl.conf;
 
-    keepalive_timeout	3600s;
-    keepalive_disable	none;
-    keepalive_requests  100000;
+        keepalive_timeout	3600s;
+        keepalive_disable	none;
+        keepalive_requests  100000;
 
-    server_name {{ name }};
+        server_name {{ name }};
 
-    root {{ root }};
+        root {{ root }};
 
-    include default-location.conf;
+        include default-location.conf;
 
-    {% if services is defined %}
-      {% for name, service in services.iteritems() if service.expose_external%}
-        {{ location(name) }}
-      {% endfor %}
-    {% endif %}
-  }
+        {% if services is defined %}
+          {% for name, service in services.iteritems() if service.expose_external%}
+            {{ location(name) }}
+          {% endfor %}
+        {% endif %}
+    }
 }
