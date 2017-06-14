@@ -23,7 +23,7 @@
 /* 0. Webfonts
  ----------------------------------- */
 
-@import url("https://fonts.googleapis.com/css?family=Roboto:100,400,300,500,700");
+/*@import url("https://fonts.googleapis.com/css?family=Roboto:100,400,300,500,700");*/
 
 
 /* -------------------------------- 
@@ -91,6 +91,7 @@ ul li {
 
 ul.bulletlist, ul.bulletlist > li {
     list-style: circle;
+    font-size: 24px;
 }
 
 .login-btn {
@@ -1149,7 +1150,7 @@ form #upload-thumb-proto {
 
 .page-header .page-title {
   color: #fff;
-  font-family: "aktiv_grotesk_regular",sans-serif;
+  font-family: "aktiv_grotesk_hair",sans-serif;
   font-size: 60px;
   line-height: 76px;
   margin: 60px 0 35px;
@@ -1167,8 +1168,12 @@ form #upload-thumb-proto {
 }
 
 .page-content {
+  margin: 0 auto;
   text-align: left;
   font-family: "aktiv_grotesk_thin",sans-serif;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 60px;
 }
 .page-content h2 {
   color: #01dd60;
@@ -1357,7 +1362,7 @@ form #upload-thumb-proto {
 
 .albums .page-content .page-title {
   color: #01dd60;
-  font-family: "aktiv_grotesk_thin",sans-serif;
+  font-family: "aktiv_grotesk_hair",sans-serif;
   font-size: 18px;
   letter-spacing: 1.5px;
   text-align: center;
@@ -1467,7 +1472,7 @@ form #upload-thumb-proto {
 }
 
 .single-album .header-content .page-title {
-  font-family: "aktiv_grotesk_thin",sans-serif;
+  font-family: "aktiv_grotesk_hair",sans-serif;
   font-size: 18px;
   letter-spacing: 1.5px;
   line-height: 22px;

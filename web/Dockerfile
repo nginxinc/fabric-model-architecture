@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
 COPY etc /etc
 COPY usr /usr
 
+ENV BACKEND_ENDPOINT_URL="http://localhost/backend"
 ENV USE_NGINX_PLUS=false
 
 RUN if [ "$USE_NGINX_PLUS" = "false" ]; then \

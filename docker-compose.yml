@@ -2,7 +2,7 @@ version: '3.1'
 services:
   proxy:
     build: proxy
-    image: fabric-model/proxy
+    image: ngrefarch/fm-proxy
     ports:
       - "80:80"
       - "443:443"
@@ -12,7 +12,7 @@ services:
 
   web:
     build: web
-    image: fabric-model/web
+    image: ngrefarch/fm-web
     environment:
       - BACKEND_ENDPOINT_URL=http://localhost/backend
     ports:
@@ -25,7 +25,7 @@ services:
 
   backend:
     build: backend
-    image: fabric-model/backend
+    image: ngrefarch/fm-backend
     ports:
       - "82:80"
     volumes:
