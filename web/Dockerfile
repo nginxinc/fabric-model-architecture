@@ -12,8 +12,7 @@ COPY usr /usr
 ENV BACKEND_ENDPOINT_URL="http://localhost/backend"
 ENV USE_NGINX_PLUS=false
 
-RUN if [ "$USE_NGINX_PLUS" = "false" ]; then \
-	cd /etc/ssl/nginx && \
+RUN cd /etc/ssl/nginx && \
 	openssl req -nodes -newkey rsa:2048 -keyout key.pem -out csr.pem -subj "/C=US/ST=California/L=San Francisco/O=NGINX/OU=Professional Services/CN=web" && \
 	openssl x509 -req -days 365 -in csr.pem -signkey key.pem -out certificate.pem; fi
 
