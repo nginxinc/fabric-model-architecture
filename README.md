@@ -70,9 +70,9 @@ To deploy the Fabric Model with NGINX Plus, first perform the steps in [Deployin
 
 Download the **nginx-repo.crt** and **nginx-repo.key** files for your NGINX Plus Developer License or subscription, and move them to the root directory of this project. You can then copy both of these files to the `/etc/nginx/ssl` directory of each microservice using the commands below:
 ```
-cp nginx-repo.crt nginx-repo.key proxy/etc/ssl/nginx
-cp nginx-repo.crt nginx-repo.key web/etc/ssl/nginx
-cp nginx-repo.crt nginx-repo.key backend/etc/ssl/nginx
+cp nginx-repo.crt nginx-repo.key <path-to-repository>/fabric-model-architecture/proxy/etc/ssl/nginx
+cp nginx-repo.crt nginx-repo.key <path-to-repository>/fabric-model-architecture/web/etc/ssl/nginx
+cp nginx-repo.crt nginx-repo.key <path-to-repository>/fabric-model-architecture/backend/etc/ssl/nginx
 ```
 You will also need to modify each Dockerfile to install NGINX Plus. In each Dockerfile, change the value of the `USE_NGINX_PLUS` environment variable from `false` to `true`
 ```
@@ -94,9 +94,9 @@ cp <key-file-name> key.pem
 ```
 Copy the newly renamed certificate and key files to each of the containers in order to make sure that the self-signed certificate warning does not occur:
 ```
-cp certificate.pem key.pem backend/etc/ssl/nginx/
-cp certificate.pem key.pem proxy/etc/ssl/nginx/
-cp certificate.pem key.pem web/etc/ssl/nginx/
+cp certificate.pem key.pem <path-to-repository>/fabric-model-architecture/backend/etc/ssl/nginx/
+cp certificate.pem key.pem <path-to-repository>/fabric-model-architecture/proxy/etc/ssl/nginx/
+cp certificate.pem key.pem <path-to-repository>/fabric-model-architecture/web/etc/ssl/nginx/
 ```
 Then rebuild all of the microservice images
 ```
