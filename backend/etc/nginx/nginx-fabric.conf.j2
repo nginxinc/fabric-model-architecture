@@ -44,7 +44,9 @@ http {
       {% endif %}
 
     server {
-        listen 80;
+        listen 80 default_server;
+
+        server_name {{ name }};
 
         {% if services is defined %}
           {% for name, service in services.iteritems() %}
@@ -58,7 +60,7 @@ http {
     }
 
     server {
-        listen       443 ssl;
+        listen       443 ssl default_server;
 
         ssl_certificate      /etc/ssl/nginx/certificate.pem;
         ssl_certificate_key  /etc/ssl/nginx/key.pem;

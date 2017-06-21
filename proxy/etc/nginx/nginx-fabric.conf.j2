@@ -43,7 +43,9 @@ http {
     {% endfor %}
 
     server {
-        listen 80;
+        listen 80 default_server;
+
+        server_name {{ name }};
 
         {% for name, service in services.iteritems() %}
             {{ location(name) }}
