@@ -16,7 +16,7 @@ ENV USE_NGINX_PLUS=false
 
 RUN cd /etc/ssl/nginx && \
 	openssl req -nodes -newkey rsa:2048 -keyout key.pem -out csr.pem -subj "/C=US/ST=California/L=San Francisco/O=NGINX/OU=Professional Services/CN=proxy" && \
-	openssl x509 -req -days 365 -in csr.pem -signkey key.pem -out certificate.pem; fi
+	openssl x509 -req -days 365 -in csr.pem -signkey key.pem -out certificate.pem
 
 RUN /usr/local/sbin/install-nginx.sh
 
